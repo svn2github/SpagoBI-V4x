@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+    <class name="it.eng.spagobi.commons.metadata.SbiExtRoles" table="SBI_EXT_ROLES">
+        <id name="extRoleId" type="integer">
+            <column name="EXT_ROLE_ID" />
+   <generator class="org.hibernate.id.enhanced.TableGenerator">
+		<param name="optimizer">none</param>
+		<param name="segment_value">SBI_EXT_ROLES</param>	
+		<param name="initial_value">1</param>	
+   </generator>
+        </id>
+            <component name="commonInfo" insert="true" update="true" 
+  			 class="it.eng.spagobi.commons.metadata.SbiCommonInfo">
+        <property name="userIn" type="string">
+            <column name="USER_IN" length="100" not-null="true" />
+        </property> 
+        <property name="userUp" type="string">
+            <column name="USER_UP" length="100" not-null="false" />
+        </property> 
+        <property name="userDe" type="string">
+            <column name="USER_DE" length="100" not-null="false" />
+        </property>                 
+        <property name="timeIn" type="timestamp">
+            <column name="TIME_IN" not-null="true" />
+        </property> 
+        <property name="timeUp" type="timestamp">
+            <column name="TIME_UP" not-null="false" />
+        </property> 
+        <property name="timeDe" type="timestamp">
+            <column name="TIME_DE" not-null="false" />
+        </property>                      
+        <property name="sbiVersionIn" type="string">
+            <column name="SBI_VERSION_IN" length="10" not-null="false" />
+        </property> 
+        <property name="sbiVersionUp" type="string">
+            <column name="SBI_VERSION_UP" length="10" not-null="false" />
+        </property> 
+        <property name="sbiVersionDe" type="string">
+            <column name="SBI_VERSION_DE" length="10" not-null="false" />
+        </property>                 
+        <property name="organization" type="string">
+            <column name="ORGANIZATION" length="20" not-null="false" />
+        </property>  			 
+  </component>         
+        <many-to-one name="roleType" class="it.eng.spagobi.commons.metadata.SbiDomains">
+            <column name="ROLE_TYPE_ID" not-null="true" />
+        </many-to-one>
+        <property name="roleTypeCode" type="string">
+            <column name="ROLE_TYPE_CD" length="20" not-null="true" />
+        </property>
+        <property name="code" type="string">
+            <column name="CODE" length="20" unique="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="100" />
+        </property>
+        <property name="descr" type="string">
+            <column name="DESCR" length="160" />
+        </property>
+		<property name="isAbleToSaveSubobjects" type="boolean">
+            <column name="save_subobjects" />
+        </property>
+		<property name="isAbleToSeeSubobjects" type="boolean">
+            <column name="see_subobjects" />
+        </property>
+		<property name="isAbleToSeeViewpoints" type="boolean">
+            <column name="see_viewpoints" />
+        </property>
+        <property name="isAbleToSeeSnapshots" type="boolean">
+            <column name="see_snapshots" />
+        </property>
+        <property name="isAbleToSeeNotes" type="boolean">
+            <column name="see_notes" />
+        </property>
+        <property name="isAbleToSendMail" type="boolean">
+            <column name="send_mail" />
+        </property>
+        <property name="isAbleToSaveIntoPersonalFolder" type="boolean">
+            <column name="save_into_folder" />
+        </property>
+        <property name="isAbleToEditWorksheet" type="boolean">
+           	<column name="edit_worksheet" />
+       	</property>
+        <property name="isAbleToSaveRememberMe" type="boolean">
+            <column name="save_remember_me" />
+        </property>
+        <property name="isAbleToSeeMetadata" type="boolean">
+            <column name="see_metadata" />
+        </property>
+        <property name="isAbleToSaveMetadata" type="boolean">
+            <column name="save_metadata" />
+        </property>
+        <property name="isAbleToBuildQbeQuery" type="boolean">
+            <column name="build_qbe_query" />
+        </property>
+		<property name="isAbleToDoMassiveExport" type="boolean">
+           	<column name="do_massive_export" />
+       	</property>
+        <property name="isAbleToManageUsers" type="boolean">
+            <column name="MANAGE_USERS" />
+        </property> 
+        <set name="sbiFuncRoles" inverse="true">
+            <key>
+                <column name="ROLE_ID" not-null="true" />
+            </key>
+            <one-to-many class="it.eng.spagobi.analiticalmodel.functionalitytree.metadata.SbiFuncRole" />
+        </set>
+        <set name="sbiParuseDets" inverse="true">
+            <key>
+                <column name="EXT_ROLE_ID" not-null="true" />
+            </key>
+            <one-to-many class="it.eng.spagobi.behaviouralmodel.analyticaldriver.metadata.SbiParuseDet" />
+        </set>
+        <filter name="tenantFilter" condition="organization=:tenant"/>  
+    </class>
+	<filter-def name="tenantFilter">
+		<filter-param name="tenant" type="string"/>
+	</filter-def>
+</hibernate-mapping>

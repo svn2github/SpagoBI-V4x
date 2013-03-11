@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+
+Name: SpagoBIConsoleEngine.war
+Implementation-Title: SpagoBIConsoleEngine
+Implementation-Version: 3.3.0 
+

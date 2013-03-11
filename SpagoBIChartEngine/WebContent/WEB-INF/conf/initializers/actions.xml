@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ACTIONS>
+	
+	<!-- CHART_ENGINE Initializations -->
+	<ACTION name="CHART_ENGINE_EXTJS_START_ACTION" 
+			class="it.eng.spagobi.engines.chart.services.initializers.ChartEngineEXTJSStartAction" 
+			scope="REQUEST">
+		<CONFIG></CONFIG>
+	</ACTION>
+	
+</ACTIONS>
+
