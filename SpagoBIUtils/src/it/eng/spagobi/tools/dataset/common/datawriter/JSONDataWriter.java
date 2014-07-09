@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import it.eng.spagobi.tools.dataset.bo.DataSetVariable;
+import it.eng.spagobi.tools.dataset.common.datastore.Field;
 import it.eng.spagobi.tools.dataset.common.datastore.IDataStore;
 import it.eng.spagobi.tools.dataset.common.datastore.IField;
 import it.eng.spagobi.tools.dataset.common.datastore.IRecord;
@@ -226,9 +227,14 @@ public class JSONDataWriter implements IDataWriter {
 						continue;
 					}
 				
-					field = record.getFieldAt( dataStore.getMetaData().getFieldIndex( fieldMetaData ) );
-					
-					
+					field = new Field();
+					try{
+						field = record.getFieldAt( dataStore.getMetaData().getFieldIndex( fieldMetaData ) );
+					}catch(IndexOutOfBoundsException idxEx){
+						logger.info("Unavailable field "+fieldMetaData.getName());
+						field.setValue(null);
+						continue;
+					}
 					
 					String fieldValue = "";
 					if(field.getValue() != null) {
