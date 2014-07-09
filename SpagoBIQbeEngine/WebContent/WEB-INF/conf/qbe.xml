@@ -41,7 +41,7 @@
 	<QBE-CROSSTAB-CELLS-LIMIT value="2000" isBlocking="true"/> 
 	<QBE-CROSSTAB-CALCULATEDFIELDS-DECIMAL value="1"/> 
 	
-	<!-- TEMPORARY_TABLE mechanism is always enabled -->
+	<!-- TEMPORARY_TABLE mechanism is always enabled -->setting.
 	<!-- tablespace can be specified when using Oracle or DB2 -->
 	<QBE_TEMPORARY_TABLE prefix="TMPSBIQBE_" suffix="" tablespace="" />
 
