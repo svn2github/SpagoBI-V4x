@@ -10,6 +10,7 @@ import it.eng.spago.base.SourceBeanException;
 import it.eng.spago.security.IEngUserProfile;
 import it.eng.spagobi.behaviouralmodel.analyticaldriver.bo.BIObjectParameter;
 import it.eng.spagobi.behaviouralmodel.analyticaldriver.bo.ObjParuse;
+import it.eng.spagobi.behaviouralmodel.lov.bo.DependenciesPostProcessingLov;
 import it.eng.spagobi.commons.dao.DAOFactory;
 import it.eng.spagobi.commons.utilities.GeneralUtilities;
 import it.eng.spagobi.tools.dataset.bo.IDataSet;
@@ -29,7 +30,7 @@ import org.apache.log4j.Logger;
  * @author Marco Cortella (marco.cortella@eng.it)
  *
  */
-public class DatasetDetail implements ILovDetail {
+public class DatasetDetail extends DependenciesPostProcessingLov implements ILovDetail {
 
 	private static transient Logger logger = Logger.getLogger(DatasetDetail.class);
 
